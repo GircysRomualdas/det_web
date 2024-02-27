@@ -1,0 +1,37 @@
+
+<div>
+    <h1>All Orders</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>sid</th>
+                <th>brand</th>
+                <th>model</th>
+                <th>icon</th>
+                <th>color</th>
+                <th>status</th>
+                <th>price</th>
+                <th>ordered</th>
+                <th>canceled</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <% @orders.each do |order| %>
+                <tr>
+                    <td><%= link_to order.sid, order_path(order.id) %></td>
+                    <td><%= order.vehicle_brand %></td>
+                    <td><%= order.vehicle_model %></td>
+                    <td><%== order.icon %></td>
+                    <td><%== order.color %></td>
+                    <td><%= order.status %></td>
+                    <td><%= order.sum_price_wo_tax_all %></td>
+                    <td><%= order.count_ordered_parts %></td>
+                    <td><%= order.count_canceled_parts %></td>
+                    <td><%= order.creation_date.strftime("%Y-%m-%d") %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%= render partial: "layouts/pagination"%>
+</div>

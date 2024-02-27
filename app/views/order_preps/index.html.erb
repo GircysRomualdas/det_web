@@ -1,0 +1,33 @@
+<div>
+    <h1>New Details</h1>
+    <%= button_to "order", root_path, class: "btn btn-primary" %>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>brand</th> 
+                <th>delivery</th>
+                <th>code</th>
+                <th>name</th>
+                <th>comment</th>
+                <th>price</th>
+                <th>quantity</th>
+                <th><%= button_to "remove all", root_path, class: "btn btn-danger" %></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <% @details.each do |detail| %>
+                <tr>
+                    <td><%= detail.car_name %></td>
+                    <td><%= detail.delivery_days %></td>
+                    <td><%= detail.code %></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td><%= detail.price %></td>
+                    <td>-</td>
+                    <td><%= button_to "remove", root_path, class: "btn btn-danger" %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%= render partial: "layouts/pagination"%>
+</div>

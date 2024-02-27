@@ -1,0 +1,23 @@
+
+#progressbar {
+    text-align: center;
+    background-color: #FFFFFF;
+    position: relative;
+    width: 150px;
+    border: 1px solid;
+}
+
+#progressbar>div {
+    background-color: #8cd98c;
+    height: 20px;
+}
+
+.progress-label {
+    font-size: .9em;
+    position: absolute;
+    margin: 0;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
