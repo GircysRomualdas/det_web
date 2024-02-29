@@ -1,4 +1,4 @@
-class DetailsController < ApplicationController 
+class BrandsController < ApplicationController 
     before_action :authenticate_user!
     
     def index 

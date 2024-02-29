@@ -1,0 +1,25 @@
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th><%=t(".code")%></th>
+                <th><%=t(".name")%></th>
+                <th><%=t(".comment")%></th>
+                <th><%=t(".progress")%></th>
+                <th><%=t(".price")%></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <% details.each do |detail| %>
+                <tr>
+                    <td><%= detail.part_code %></td>
+                    <td><%= detail.part_name %></td>
+                    <td><%= detail.comment %></td>
+                    <td><%== detail.kiekis%></td>
+                    <td><%= detail.price_with_tax  %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%= render "layouts/pagination", pagy: pagy %>
+</div>

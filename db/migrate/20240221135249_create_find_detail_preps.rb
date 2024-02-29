@@ -1,7 +1,7 @@
 class CreateFindDetailPreps < ActiveRecord::Migration[7.0]
   def change
     create_table :find_detail_preps do |t|
-      # t.belongs_to :order_prep
+      t.belongs_to :order_prep
       t.integer :detail_id
       t.integer :car_id
       t.string :car_name

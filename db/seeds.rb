@@ -3,11 +3,38 @@ def generate_code(number)
     Array.new(number) { charset.sample }.join
 end
 
-userTest = User.where(email: "r2udis@gmail.com").first_or_initialize
-userTest.update!(
+response = HTTParty.get('https://dev.detaliutiekimas.lt/ords/dev/web/getAllBrands', :verify => false)
+
+response["brands"].each do |brand| 
+    created = Brand.where(id: brand["brand_id"]).first_or_initialize
+
+    created.update!(
+        brand_id: brand["id"],
+        name: brand["name"],
+        group_id: brand["group"]
+    )
+end
+
+userTest1 = User.where(email: "test1@gmail.com").first_or_initialize
+userTest1.update!(
     password: "password",
     password_confirmation: "password",
     company_id: 281
+)
+orderPrep1 = OrderPrep.where(user: userTest1).first_or_initialize
+orderPrep1.update!(
+    brand: Brand.first
+)
+
+userTest2 = User.where(email: "test2@gmail.com").first_or_initialize
+userTest2.update!(
+    password: "password",
+    password_confirmation: "password",
+    company_id: 281
+)
+orderPrep2 = OrderPrep.where(user: userTest2).first_or_initialize
+orderPrep2.update!(
+    brand: Brand.first
 )
 
 response = HTTParty.get('https://dev.detaliutiekimas.lt/ords/dev/web/getAllCompanies', :verify => false)
@@ -23,10 +50,14 @@ response["companies"].each do |company|
                 surcharge_name:         company["surcharge_name"],
                 is_foreign_customer:    company["is_foreign_customer"]
             )
+            orderPrep = OrderPrep.where(user: created).first_or_initialize
+            orderPrep.update!(
+                brand: Brand.first
+            )
         else  
             # password = generate_code(40)
             password = "password"   # test development
-            User.create(
+            user = User.create(
                 email:                  company["company_email"],
                 password:               password,
                 password_confirmation:  password,
@@ -35,6 +66,10 @@ response["companies"].each do |company|
                 surcharge_id:           company["surcharge_id"],
                 surcharge_name:         company["surcharge_name"],
                 is_foreign_customer:    company["is_foreign_customer"]
+            )
+            orderPrep = OrderPrep.where(user: user).first_or_initialize
+            orderPrep.update!(
+                brand: Brand.first
             )
         end
     end
@@ -92,18 +127,5 @@ response["details"].each do |detail|
         qnt_confirmed: detail["NQNT_CONFIRMED"],
         onepart_price_with_tax: detail["NONEPART_PRICE_WITH_TAX"],
         qnt_packed: detail["NQNT_PACKED"]
-    )
-end
-
-
-response = HTTParty.get('https://dev.detaliutiekimas.lt/ords/dev/web/getAllBrands', :verify => false)
-
-response["brands"].each do |brand| 
-    created = Brand.where(id: brand["brand_id"]).first_or_initialize
-
-    created.update!(
-        brand_id: brand["id"],
-        name: brand["name"],
-        group_id: brand["group"]
     )
 end

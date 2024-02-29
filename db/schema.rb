@@ -78,6 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_21_135432) do
   end
 
   create_table "find_detail_preps", force: :cascade do |t|
+    t.integer "order_prep_id"
     t.integer "detail_id"
     t.integer "car_id"
     t.string "car_name"
@@ -94,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_21_135432) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_prep_id"], name: "index_find_detail_preps_on_order_prep_id"
   end
 
   create_table "order_preps", force: :cascade do |t|

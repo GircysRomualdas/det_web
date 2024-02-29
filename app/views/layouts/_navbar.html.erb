@@ -2,15 +2,14 @@
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <%= link_to "WEB", root_path, class: "navbar-brand text-white" %>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><%= link_to "Orders", orders_path, class: "nav-link text-white" %></li>
-                <li class="nav-item"><%= link_to "Find Detail", find_detail_preps_path, class: "nav-link text-white" %></li>
-                <li class="nav-item"><%= link_to "New Order", order_preps_path, class: "nav-link text-white" %></li>
+                <li class="nav-item"><%= link_to t(".orders"), orders_path, class: "nav-link text-white" %></li>
+                <li class="nav-item"><%= link_to t(".find_parts"), find_detail_preps_path, class: "nav-link text-white" %></li>
+                <li class="nav-item"><%= link_to t(".new_order"), order_preps_path, class: "nav-link text-white" %></li>
             </ul>
             <%= render partial: "locales/locale"%>
-            <%= current_user.email %>
-            <%= button_to "Log Out", destroy_user_session_path, class: "btn btn-primary mx-2", method: :delete %>
+            <div class="mx-2"><%= current_user.email %></div>
+            <%= button_to t(".log_out"), destroy_user_session_path, class: "btn btn-primary mx-2", method: :delete %>
         </div>
     </div>
 </nav>

@@ -1,5 +1,5 @@
 <div>
     <% flash.each do |key, value| %>
-        <%= content_tag :div, value, class: "alert alert-#{FlashHelper.key_to_class(key)}", role: "alert" %>
+        <%= content_tag :div, simple_format(value), class: "alert alert-#{FlashHelper.key_to_class(key)}", role: "alert" %>
     <% end %>
 </div>

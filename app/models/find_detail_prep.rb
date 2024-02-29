@@ -1,5 +1,5 @@
 class FindDetailPrep < ApplicationRecord
-    # belongs_to :order_prep
+    belongs_to :order_prep
     validates :name,  length: { maximum: 50, message: "/Name must be at most 50 characters" }
     validates :comment, length: { maximum: 50, message: "/Comment must be at most 50 characters" }
 
