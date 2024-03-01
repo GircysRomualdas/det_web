@@ -2,14 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-9 my-auto">
-                <h1>New Order</h1>
+                <h1><%=t(".new_order")%></h1>
             </div>
             <div class="col-3 my-auto ">
                 <%= render "brands/form", order_prep: @order_prep %>
             </div>
         </div>
     </div>
-    <%= button_to "order", root_path, class: "btn btn-primary" %>
+    <%= button_to t(".order"), root_path, class: "btn btn-primary" %>
     
     <%= render "detail_preps/table", details: @details, pagy: @pagy %>
 </div>

@@ -2,19 +2,15 @@ class DetailPrepsController < ApplicationController
     before_action :authenticate_user!
 
     def index 
-        print("\n--- DetailPreps index ---\n")
     end
 
     def show 
-        print("\n--- DetailPreps show ---\n")
     end
 
     def new 
-        print("\n--- DetailPreps new ---\n")
     end
 
     def create 
-        print("\n--- DetailPreps create ---\n")
         findDetailPrep = FindDetailPrep.find(params[:id])
         detailPrep = DetailPrep.where(detail_id: findDetailPrep.detail_id).first_or_initialize
 
@@ -40,15 +36,12 @@ class DetailPrepsController < ApplicationController
     end
 
     def edit 
-        print("\n--- DetailPreps edit ---\n")
     end
 
     def update 
-        print("\n--- DetailPreps update ---\n")
     end
 
     def destroy 
-        print("\n--- DetailPreps delete ---\n")
         DetailPrep.find(params[:id]).destroy
         redirect_to request.referrer || root_path, notice: "remove"
     end

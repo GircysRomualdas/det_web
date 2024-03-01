@@ -1,14 +1,14 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>brand</th> 
-            <th>delivery</th>
-            <th>code</th>
-            <th>name</th>
-            <th>comment</th>
-            <th>price</th>
-            <th>quantity</th>
-            <th><%= button_to "remove all", root_path, class: "btn btn-danger" %></th>
+            <th><%=t(".brand")%></th> 
+            <th><%=t(".delivery")%></th>
+            <th><%=t(".code")%></th>
+            <th><%=t(".name")%></th>
+            <th><%=t(".comment")%></th>
+            <th><%=t(".price")%></th>
+            <th><%=t(".quantity")%></th>
+            <th><%= button_to t(".remove_all"), root_path, class: "btn btn-danger" %></th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -21,7 +21,7 @@
                 <td>-</td>
                 <td><%= detail.price %></td>
                 <td><%= detail.quantity %></td>
-                <td><%= button_to "remove", detail_prep_path(detail), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
+                <td><%= button_to t(".remove"), detail_prep_path(detail), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
             </tr>
         <% end %>
     </tbody>

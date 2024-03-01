@@ -3,7 +3,7 @@
     <div class="input-group">
         <%#= form.label :brand_id %>
         <%= form.collection_select :brand_id, Brand.all, :id, :name, { prompt: "Select a Brand" }, { class: "form-control" } %>
-        <%= form.submit "update", class: "btn btn-primary" %>
+        <%= form.submit t(".update"), class: "btn btn-primary" %>
     </div>
 <% end %>
 

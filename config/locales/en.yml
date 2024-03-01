@@ -39,4 +39,44 @@ en:
       progress: "Progress*"
       price: "Price*"
 
+  find_detail_preps:
+    index:
+      find_parts: "Find Parts*"
+
+    find:
+      code: "Code*"
+      find: "Find*"
+
+    table:
+      brand: "Brand*"
+      delivery: "Delivery*"
+      code: "Code*"
+      name: "Name*"
+      comment: "Comment*"
+      price: "Price*"
+      quantity: "Quantity*"
+      add_all: "Add All*"
+      add: "Add*"
+    
+  brands:
+    form:
+      update: "Update*"
+
+  order_preps:
+    index:
+      new_order: "New Order*"
+      order: "Order*"
+
+  detail_preps:
+    table:
+      brand: "Brand*"
+      delivery: "Delivery*"
+      code: "Code*"
+      name: "Name*"
+      comment: "Comment*"
+      price: "Price*"
+      quantity: "Quantity*"
+      remove_all: "Remove All*"
+      remove: "Remove*"
+
 

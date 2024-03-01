@@ -2,22 +2,18 @@ class FindDetailPrepsController < ApplicationController
     before_action :authenticate_user!
     
     def index 
-        print("\n--- FindDetailPreps index ---\n")
         RemoveDetailsService.new.find_from_details(current_user)
         @order_prep = OrderPrep.where(user: current_user).first
         @pagy, @find_details = pagy(FindDetailPrep.where(order_prep: @order_prep))
     end
 
     def show 
-        print("\n--- FindDetailPreps show ---\n")
     end
 
     def new 
-        print("\n--- FindDetailPreps new ---\n")
     end
 
     def create 
-        print("\n--- FindDetailPreps create ---\n")
         param = detail_params
         details = ApiDetailsService.new.get_detail_by_code(param[:code], current_user)
         info = ""
@@ -57,15 +53,12 @@ class FindDetailPrepsController < ApplicationController
     end
 
     def edit 
-        print("\n--- FindDetailPreps edit ---\n")
     end
 
     def update 
-        print("\n--- FindDetailPreps update ---\n")
     end
 
     def delete 
-        print("\n--- FindDetailPreps index ---\n")
     end
 
     private 
