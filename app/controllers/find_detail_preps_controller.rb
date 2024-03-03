@@ -56,10 +56,13 @@ class FindDetailPrepsController < ApplicationController
     end
 
     def update 
-        if FindDetailPrep.find(params[:id]).update(detail_params)
-            redirect_to request.referrer || root_path, notice: "Updated to #{detail_params}"
+        @find_detail_prep = FindDetailPrep.find(params[:id])
+        if @find_detail_prep.update(detail_params)
+            flash.now[:success] = "Updated to #{detail_params}"
+            render json: { success: true, flash: flash.now }
         else
-            redirect_to request.referrer || root_path, danger: "Updated not to #{detail_params}"
+            flash.now[:danger] = "Updated not to #{detail_params} error: #{@find_detail_prep.errors.full_messages}"
+            render json: { success: false, flash: flash.now }
         end
     end
 
