@@ -13,14 +13,14 @@
     </thead>
     <tbody class="table-group-divider">
         <% find_details.each do |detail| %>
-            <tr>
+            <tr data-detail-id="<%= detail.id %>">
                 <td><%= detail.car_name %></td>
                 <td><%= detail.delivery_days %></td>
                 <td><%= detail.code %></td>
-                <td>-</td>
-                <td>-</td>
+                <td data-controller="find-detail-preps" data-action="click->find-detail-preps#edit_name" data-target="find-detail-preps.name"><%= detail.name%></td>
+                <td data-controller="find-detail-preps" data-action="click->find-detail-preps#edit_comment" data-target="find-detail-preps.comment"><%= detail.comment%></td>
                 <td><%= detail.price %></td>
-                <td><%= detail.quantity %></td>
+                <td data-controller="find-detail-preps" data-action="click->find-detail-preps#edit_quantity" data-target="find-detail-preps.quantity"><%= detail.quantity %></td>
                 <td><%= button_to t(".add"), detail_preps_path(id: detail.id), class: "btn btn-success" %></td>
             </tr>
         <% end %>

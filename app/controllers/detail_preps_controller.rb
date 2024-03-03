@@ -39,10 +39,20 @@ class DetailPrepsController < ApplicationController
     end
 
     def update 
+        if DetailPrep.find(params[:id]).update(detail_params)
+            redirect_to request.referrer || root_path, notice: "Updated to #{detail_params}"
+        else
+            redirect_to request.referrer || root_path, danger: "Updated not to #{detail_params}"
+        end
     end
 
     def destroy 
         DetailPrep.find(params[:id]).destroy
         redirect_to request.referrer || root_path, notice: "remove"
     end
+
+    private 
+        def detail_params
+            params.permit(:code, :name, :comment, :quantity)
+        end
 end
