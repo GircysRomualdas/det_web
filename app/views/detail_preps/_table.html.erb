@@ -8,7 +8,7 @@
             <th><%=t(".comment")%></th>
             <th><%=t(".price")%></th>
             <th><%=t(".quantity")%></th>
-            <th><%= button_to t(".remove_all"), detail_prep_path(id: 0, remove_all: true), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></th>
+            <th><%= button_to t(".remove_all"), detail_prep_path(id: 0, remove_all: true), method: :delete, form: {data: {turbo_confirm: "Are you sure remove all?"}}, class: "btn btn-danger" %></th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -21,7 +21,7 @@
                 <td data-controller="detail-preps" data-action="click->detail-preps#edit_comment" data-target="detail-preps.name"><%= detail.comment%></td>
                 <td><%= detail.price %></td>
                 <td data-controller="detail-preps" data-action="click->detail-preps#edit_quantity" data-target="detail-preps.quantity"><%= detail.quantity %></td>
-                <td><%= button_to t(".remove"), detail_prep_path(detail), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
+                <td><%= button_to t(".remove"), detail_prep_path(detail), method: :delete, form: {data: {turbo_confirm: "Are you sure remove?"}}, class: "btn btn-danger" %></td>
             </tr>
         <% end %>
     </tbody>

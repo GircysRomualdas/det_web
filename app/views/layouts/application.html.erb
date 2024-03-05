@@ -16,5 +16,8 @@
       <%= render partial: "layouts/flash"%>
       <%= yield %>
     </div>
+
+    <%#= button_to "test confirm", orders_path, method: :get, form: {data: {turbo_confirm: "?"}} %>
+    <%= render partial: "layouts/confirm"%>
   </body>
 </html>

@@ -1,5 +1,5 @@
 
-<%= form_with(model: order_prep, local: true) do |form| %>
+<%= form_with(model: order_prep, local: true, html: { data: { turbo_confirm: "Are you sure change brand?" } }) do |form| %>
     <div class="input-group">
         <%#= form.label :brand_id %>
         <%= form.collection_select :brand_id, Brand.all.order(:name), :id, :name, { prompt: "Select a Brand" }, { class: "form-control" } %>
