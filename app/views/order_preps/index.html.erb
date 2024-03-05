@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <%= button_to t(".order"), root_path, class: "btn btn-primary" %>
+    <%= button_to t(".order"), order_preps_path(id: @order_prep.id), class: "btn btn-primary" %>
     
     <%= render "detail_preps/table", details: @details, pagy: @pagy %>
 </div>

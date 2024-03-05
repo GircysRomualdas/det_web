@@ -13,6 +13,13 @@ class OrderPrepsController < ApplicationController
     end
 
     def create 
+        order_prep = OrderPrep.find(params[:id])
+        if ApiOrderPrepsService.new.post_order(current_user)
+            DetailPrep.where(order_prep: order_prep).destroy_all
+            redirect_to request.referrer || root_path, notice: "Order created"
+        else 
+            redirect_to request.referrer || root_path, danger: "Order not created"
+        end
     end
 
     def edit 

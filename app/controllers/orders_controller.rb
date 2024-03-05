@@ -3,8 +3,6 @@ class OrdersController < ApplicationController
 
     def index 
         @pagy, @orders = pagy(Order.where(:client_id => current_user.company_id))
-
-        response = ApiOrderPrepsService.new.post_order(current_user)
     end
 
     def show 

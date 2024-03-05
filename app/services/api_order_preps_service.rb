@@ -21,20 +21,7 @@ class ApiOrderPrepsService
             )
         end
 
-        # response = HTTParty.post('https://dev.detaliutiekimas.lt/ords/dev/web/postOrder', :verify => false, :body => order)
-        response = HTTParty.post('https://dev.detaliutiekimas.lt/ords/dev/web/postOrder', :verify => false, :body => order.to_json)
-
-        print("\n---------------------------\n")
-        print("\nresponse: #{response["nstatus"]}\n")
-        opts = {
-            array_nl: "\n",
-            object_nl: "\n",
-            indent: '  ',
-            space_before: ' ',
-            space: ' '
-        }
-        print(JSON.generate(order, opts))
-        print("\n---------------------------\n")
+        response = HTTParty.post('https://dev.detaliutiekimas.lt/ords/dev/web/postOrder', :verify => false, :headers => {"Content-Type": "application/json"} , :body => order.to_json)
 
         if response["nstatus"] == 1
             return true
