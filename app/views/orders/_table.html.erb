@@ -1,33 +1,34 @@
-<table class="table table-hover">
+
+<table class="table table-hover custom-table">
     <thead>
         <tr>
-            <th><%=t(".id")%></th>
-            <th><%=t(".brand")%></th>
-            <th><%=t(".model")%></th>
-            <th><%=t(".vin")%></th>
-            <th><%=t(".changes")%></th>
-            <th><%=t(".progress")%></th>
-            <th><%=t(".status")%></th>
-            <th><%=t(".price")%></th>
+            <th class="col-1"><%=t(".id")%></th>
+            <th class="col-1"><%=t(".brand")%></th>
+            <th class="col-1"><%=t(".model")%></th>
+            <th class="col-2"><%=t(".vin")%></th>
+            <th class="col-1"><%=t(".changes")%></th>
+            <th class="col-1"><%=t(".progress")%></th>
+            <th class="col-2"><%=t(".status")%></th>
+            <th class="col-1"><%=t(".price")%></th>
             <th><%=t(".ordered")%></th>
             <th><%=t(".cancelled")%></th>
-            <th><%= t(".created") %></th>
+            <th class="col-1"><%= t(".created") %></th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
         <% orders.each do |order| %>
             <tr>
-                <td><%= link_to order.sid, order_path(order.id) %></td>
-                <td><%= order.vehicle_brand %></td>
-                <td><%= order.vehicle_model %></td>
-                <td><%= order.vin %></td>
-                <td><%== order.icon %></td>
-                <td><%== order.color %></td>
-                <td><%= order.status %></td>
-                <td><%= order.sum_price_wo_tax_all %></td>
+                <td class="col-1"><%= link_to order.sid, order_path(order.id) %></td>
+                <td class="col-1"><%= order.vehicle_brand %></td>
+                <td class="col-1"><%= order.vehicle_model %></td>
+                <td class="col-2"><%= order.vin %></td>
+                <td class="col-1"><%== order.icon %></td>
+                <td class="col-1"><%== order.color %></td>
+                <td class="col-2"><%= order.status %></td>
+                <td class="col-1"><%= number_to_currency(order.sum_price_wo_tax_all, unit: "€", format: "%n %u") %></td>
                 <td><%= order.count_ordered_parts %></td>
                 <td><%= order.count_canceled_parts %></td>
-                <td><%= order.creation_date.strftime("%Y-%m-%d") %></td>
+                <td class="col-1"><%= order.creation_date.strftime("%Y-%m-%d") %></td>
             </tr>
         <% end %>
     </tbody>

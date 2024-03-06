@@ -1,27 +1,27 @@
-<table class="table table-hover">
+<table class="table table-hover custom-table">
     <thead>
         <tr>
-            <th><%=t(".brand")%></th> 
-            <th><%=t(".delivery")%></th>
-            <th><%=t(".code")%></th>
-            <th><%=t(".name")%></th>
-            <th><%=t(".comment")%></th>
-            <th><%=t(".price")%></th>
-            <th><%=t(".quantity")%></th>
-            <th><%= button_to t(".remove_all"), detail_prep_path(id: 0, remove_all: true), method: :delete, form: {data: {turbo_confirm: "Are you sure remove all?"}}, class: "btn btn-danger" %></th>
+            <th class="col-2"><%=t(".brand")%></th> 
+            <th class="col-1"><%=t(".delivery")%></th>
+            <th class="col-2"><%=t(".code")%></th>
+            <th class="col-2"><%=t(".name")%></th>
+            <th class="col-2"><%=t(".comment")%></th>
+            <th class="col-1"><%=t(".price")%></th>
+            <th class="col-1"><%=t(".quantity")%></th>
+            <th class="col-1"><%= button_to t(".remove_all"), detail_prep_path(id: 0, remove_all: true), method: :delete, form: {data: {turbo_confirm: "Are you sure remove all?"}}, class: "btn btn-danger py-1 px-1" %></th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
         <% details.each do |detail| %>
             <tr data-detail-id="<%= detail.id %>">
-                <td><%= detail.car_name %></td>
-                <td><%= detail.delivery_days %></td>
-                <td><%= detail.code %></td>
-                <td data-controller="detail-preps" data-action="click->detail-preps#edit_name" data-target="detail-preps.name"><%= detail.name%></td>
-                <td data-controller="detail-preps" data-action="click->detail-preps#edit_comment" data-target="detail-preps.name"><%= detail.comment%></td>
-                <td><%= detail.price %></td>
-                <td data-controller="detail-preps" data-action="click->detail-preps#edit_quantity" data-target="detail-preps.quantity"><%= detail.quantity %></td>
-                <td><%= button_to t(".remove"), detail_prep_path(detail), method: :delete, form: {data: {turbo_confirm: "Are you sure remove?"}}, class: "btn btn-danger" %></td>
+                <td class="col-2"><%= detail.car_name %></td>
+                <td class="col-1"><%= detail.delivery_days %></td>
+                <td class="col-2"><%= detail.code %></td>
+                <td class="col-2" data-controller="detail-preps" data-action="click->detail-preps#edit_name" data-target="detail-preps.name"><%= detail.name%></td>
+                <td class="col-2" data-controller="detail-preps" data-action="click->detail-preps#edit_comment" data-target="detail-preps.name"><%= detail.comment%></td>
+                <td class="col-1"><%= number_to_currency(detail.price, unit: "€", format: "%n %u") %></td>
+                <td class="col-1" data-controller="detail-preps" data-action="click->detail-preps#edit_quantity" data-target="detail-preps.quantity"><%= detail.quantity %></td>
+                <td class="col-1"><%= button_to t(".remove"), detail_prep_path(detail), method: :delete, form: {data: {turbo_confirm: "Are you sure remove?"}}, class: "btn btn-danger py-1 px-3" %></td>
             </tr>
         <% end %>
     </tbody>
