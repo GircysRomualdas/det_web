@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     before_action :authenticate_user!
 
     def index 
-        @pagy, @orders = pagy(Order.where(:client_id => current_user.company_id))
+        @pagy, @orders = pagy(Order.where(:client_id => current_user.company_id).order(creation_date: :desc))
     end
 
     def show 
