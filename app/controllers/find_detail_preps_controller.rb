@@ -4,7 +4,10 @@ class FindDetailPrepsController < ApplicationController
     def index 
         RemoveDetailsService.new.find_from_details(current_user)
         @order_prep = OrderPrep.where(user: current_user).first
-        @pagy, @find_details = pagy(FindDetailPrep.where(order_prep: @order_prep))
+
+        find_details = FindDetailPrep.where(order_prep: @order_prep)
+        @q = find_details.ransack(params[:q])
+        @pagy, @find_details = pagy(@q.result(distrinct: true))
     end
 
     def show 

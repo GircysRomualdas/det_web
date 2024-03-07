@@ -55,8 +55,8 @@ response["companies"].each do |company|
                 brand: Brand.first
             )
         else  
-            # password = generate_code(40)
-            password = "password"   # test development
+            password = generate_code(40)
+            # password = "password"   # test development
             user = User.create(
                 email:                  company["company_email"],
                 password:               password,

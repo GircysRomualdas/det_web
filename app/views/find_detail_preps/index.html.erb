@@ -1,16 +1,21 @@
+
 <div>
-    <div class="container">
-        <div class="row">
-            <div class="col-8 my-auto">
-                <h1><%=t(".find_parts")%></h1>
-            </div>
-            <div class="col-4 my-auto ">
-                <%= render "brands/form", order_prep: @order_prep %>
-            </div>
+    <div class="row">
+        <div class="col-8 my-auto">
+            <h1><%=t(".find_parts")%></h1>
+        </div>
+        <div class="col-4 my-auto ">
+            <%= render "brands/form", order_prep: @order_prep %>
         </div>
     </div>
-    <%= render partial: "find_detail_preps/find"%>
+    <div class="row">
+        <div class="col-2">
 
-    <%= render "find_detail_preps/table", find_details: @find_details, pagy: @pagy %>
+            <%= render "find_detail_preps/search_filter", path: find_detail_preps_path, q: @q %>
+        </div>
+        <div class="col">
+            <%= render partial: "find_detail_preps/find"%>
+            <%= render "find_detail_preps/table", find_details: @find_details, pagy: @pagy %>
+        </div>
+    </div>
 </div>
-

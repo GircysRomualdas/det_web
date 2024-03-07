@@ -1,30 +1,63 @@
+
 <table class="table table-hover custom-table">
     <thead>
         <tr>
-            <th class="col-2"><%=t(".brand")%></th> 
-            <th class="col-1"><%=t(".delivery")%></th>
-            <th class="col-2"><%=t(".code")%></th>
-            <th class="col-2"><%=t(".name")%></th>
-            <th class="col-2"><%=t(".comment")%></th>
-            <th class="col-1"><%=t(".price")%></th>
-            <th class="col-1"><%=t(".quantity")%></th>
-            <th class="col-1"><%= button_to t(".add_all"), detail_preps_path(add_all: true), class: "btn btn-success py-1 px-2" %></th>
+            <th class="col-2">
+                <%= sort_link(@q, :car_name, t(".brand"), class: "text-decoration-none") %>
+            </th> 
+            <th class="col-1">
+                <%= sort_link(@q, :delivery_days, t(".delivery"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-2">
+                <%= sort_link(@q, :code, t(".code"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-2">
+                <%= sort_link(@q, :name, t(".name"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-2">
+                <%= sort_link(@q, :comment, t(".comment"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-1">
+                <%= sort_link(@q, :price, t(".price"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-1">
+                <%= sort_link(@q, :quantity, t(".quantity"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-1">
+                <%= button_to t(".add_all"), detail_preps_path(add_all: true), class: "btn btn-success py-1 px-2" %>
+            </th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
         <% find_details.each do |detail| %>
             <tr data-detail-id="<%= detail.id %>">
-                <td class="col-2"><%= detail.car_name %></td>
-                <td class="col-1"><%= detail.delivery_days %></td>
-                <td class="col-2"><%= detail.code %></td>
-                <td class="col-2" data-controller="find-detail-preps" data-action="click->find-detail-preps#edit_name" data-target="find-detail-preps.name"><%= detail.name%></td>
-                <td class="col-2" data-controller="find-detail-preps" data-action="click->find-detail-preps#edit_comment" data-target="find-detail-preps.comment"><%= detail.comment%></td>
-                <td class="col-1"><%= number_to_currency(detail.price, unit: "€", format: "%n %u") %></td>
-                <td class="col-1" data-controller="find-detail-preps" data-action="click->find-detail-preps#edit_quantity" data-target="find-detail-preps.quantity"><%= detail.quantity %></td>
-                <td class="col-1"><%= button_to t(".add"), detail_preps_path(id: detail.id), class: "btn btn-success py-1 px-3" %></td>
+                <td class="col-2">
+                    <%= detail.car_name %>
+                </td>
+                <td class="col-1">
+                    <%= detail.delivery_days %>
+                </td>
+                <td class="col-2">
+                    <%= detail.code %>
+                </td>
+                <td class="col-2" data-controller="find-detail-preps" data-action="click->find-detail-preps#edit_name" data-target="find-detail-preps.name">
+                    <%= detail.name%>
+                </td>
+                <td class="col-2" data-controller="find-detail-preps" data-action="click->find-detail-preps#edit_comment" data-target="find-detail-preps.comment">
+                    <%= detail.comment%>
+                </td>
+                <td class="col-1">
+                    <%= number_to_currency(detail.price, unit: "€", format: "%n %u") %>
+                </td>
+                <td class="col-1" data-controller="find-detail-preps" data-action="click->find-detail-preps#edit_quantity" data-target="find-detail-preps.quantity">
+                    <%= detail.quantity %>
+                </td>
+                <td class="col-1">
+                    <%= button_to t(".add"), detail_preps_path(id: detail.id), class: "btn btn-success py-1 px-3" %>
+                </td>
             </tr>
         <% end %>
     </tbody>
 </table>
-<%= render "layouts/pagination", pagy: pagy %>
+<%= render "layouts/shared/pagination", pagy: pagy %>
 

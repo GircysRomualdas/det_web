@@ -1,0 +1,16 @@
+
+<%= search_form_for(q, url: path, method: :get) do |f| %>
+    <div class="input-group mb-3">
+        <%= f.search_field :part_code_or_part_name_or_comment_or_status_cont, class: "form-control" %>
+        <%= f.submit class: "btn btn-primary" %>
+    </div>
+    <div>
+        <h5><%= t(".status") %></h5>
+        <%= f.collection_check_boxes(:status_in, Detail.select(:status).distinct, :status, :status, {}, onchange: 'this.form.requestSubmit();') do |checkbox| %>
+            <div class="field form-group form-check">
+                <%= checkbox.check_box class: "form-check-input" %>
+                <%= checkbox.label class: "form-check-label" %>
+            </div>
+        <% end %>
+    </div>
+<% end %>

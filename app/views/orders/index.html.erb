@@ -1,5 +1,12 @@
 
 <div>
     <h1><%=t(".all_orders")%></h1>
-    <%= render "orders/table", orders: @orders, pagy: @pagy %>
+    <div class="row">
+        <div class="col-2">
+            <%= render "search_filter", path: orders_path, q: @q %>
+        </div>
+        <div class="col">
+            <%= render "orders/table", orders: @orders, pagy: @pagy %>
+        </div>
+    </div>
 </div>

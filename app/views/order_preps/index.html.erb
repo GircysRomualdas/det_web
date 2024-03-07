@@ -1,15 +1,28 @@
+
 <div>
     <div class="container">
         <div class="row">
-            <div class="col-8 my-auto">
-                <h1><%=t(".new_order")%></h1>
+            <div class="col my-auto">
+                <div class="row">
+                    <div class="col-4 my-auto">
+                        <h1><%=t(".new_order")%></h1>
+                    </div>
+                    <div class="col my-auto">
+                        <%= button_to t(".order"), order_preps_path(id: @order_prep.id), method: :post, form: {data: {turbo_confirm: "Are you sure order?"}}, class: "btn btn-warning" %>
+                    </div>
+                </div>
             </div>
             <div class="col-4 my-auto ">
                 <%= render "brands/form", order_prep: @order_prep %>
             </div>
         </div>
     </div>
-    <%= button_to t(".order"), order_preps_path(id: @order_prep.id), method: :post, form: {data: {turbo_confirm: "Are you sure order?"}}, class: "btn btn-primary" %>
-    
-    <%= render "detail_preps/table", details: @details, pagy: @pagy %>
+    <div class="row">
+        <div class="col-2">
+            <%= render "detail_preps/search_filter", path: order_preps_path, q: @q %>
+        </div>
+        <div class="col">
+            <%= render "detail_preps/table", details: @details, pagy: @pagy %>
+        </div>
+    </div>
 </div>

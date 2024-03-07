@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,14 +11,13 @@
   </head>
   <body>
     <% if user_signed_in? %>
-      <%= render partial: "layouts/navbar"%>
+      <%= render partial: "layouts/shared/navbar"%>
     <%end%>
     <div class="container my-3">
-      <%= render partial: "layouts/flash"%>
+      <%= render partial: "layouts/shared/flash"%>
       <%= yield %>
     </div>
 
-    <%#= button_to "test confirm", orders_path, method: :get, form: {data: {turbo_confirm: "?"}} %>
-    <%= render partial: "layouts/confirm"%>
+    <%= render partial: "layouts/shared/confirm"%>
   </body>
 </html>

@@ -2,7 +2,6 @@
 <%= form_with(url: find_detail_preps_path, method: 'post') do |form| %>
     <div class="input-group mb-3">
         <%= form.text_field :code, class: "form-control", placeholder: t(".code") %>
-        <%#= form.text_field :name %>
         <%= form.submit t(".find"), class: "btn btn-primary" %>
     </div>
 <% end %>

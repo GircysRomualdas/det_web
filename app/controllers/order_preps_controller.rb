@@ -3,7 +3,10 @@ class OrderPrepsController < ApplicationController
 
     def index 
         @order_prep = OrderPrep.where(user: current_user).first
-        @pagy, @details = pagy(DetailPrep.where(order_prep: OrderPrep.where(user: current_user).first))
+
+        details = DetailPrep.where(order_prep: @order_prep)
+        @q = details.ransack(params[:q])
+        @pagy, @details = pagy(@q.result(distrinct: true))
     end
 
     def show 

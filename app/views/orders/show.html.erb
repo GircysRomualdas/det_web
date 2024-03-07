@@ -1,4 +1,12 @@
+
 <div>
     <%= render "order", order: @order %>
-    <%= render "details/table", details: @details, pagy: @pagy %>
+    <div class="row">
+        <div class="col-2">
+            <%= render "details/search_filter", path: order_path(@order.id), q: @q %>
+        </div>
+        <div class="col">
+            <%= render "details/table", details: @details, pagy: @pagy %>
+        </div>
+    </div>
 </div>

@@ -2,35 +2,80 @@
 <table class="table table-hover custom-table">
     <thead>
         <tr>
-            <th class="col-1"><%=t(".id")%></th>
-            <th class="col-1"><%=t(".brand")%></th>
-            <th class="col-1"><%=t(".model")%></th>
-            <th class="col-2"><%=t(".vin")%></th>
-            <th class="col-1"><%=t(".changes")%></th>
-            <th class="col-1"><%=t(".progress")%></th>
-            <th class="col-2"><%=t(".status")%></th>
-            <th class="col-1"><%=t(".price")%></th>
-            <th><%=t(".ordered")%></th>
-            <th><%=t(".cancelled")%></th>
-            <th class="col-1"><%= t(".created") %></th>
+            <th class="col-1">
+                <%= sort_link(@q, :sid, t(".id"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-1">
+                <%= sort_link(@q, :vehicle_brand, t(".brand"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-1">
+                <%= sort_link(@q, :vehicle_model, t(".model"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-2">
+                <%= sort_link(@q, :vin, t(".vin"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-1">
+                <%= sort_link(@q, :icon, t(".changes"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-1">
+                <%= sort_link(@q, :color, t(".progress"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-2">
+                <%= sort_link(@q, :status, t(".status"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-1">
+                <%= sort_link(@q, :sum_price_wo_tax_all, t(".price"), class: "text-decoration-none") %>
+            </th>
+            <th>
+                <%= sort_link(@q, :count_ordered_parts, t(".ordered"), class: "text-decoration-none") %>
+            </th>
+            <th>
+                <%= sort_link(@q, :count_canceled_parts, t(".cancelled"), class: "text-decoration-none") %>
+            </th>
+            <th class="col-1">
+                <%= sort_link(@q, :creation_date, t(".created"), class: "text-decoration-none") %>
+            </th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
         <% orders.each do |order| %>
             <tr>
-                <td class="col-1"><%= link_to order.sid, order_path(order.id) %></td>
-                <td class="col-1"><%= order.vehicle_brand %></td>
-                <td class="col-1"><%= order.vehicle_model %></td>
-                <td class="col-2"><%= order.vin %></td>
-                <td class="col-1"><%== order.icon %></td>
-                <td class="col-1"><%== order.color %></td>
-                <td class="col-2"><%= order.status %></td>
-                <td class="col-1"><%= number_to_currency(order.sum_price_wo_tax_all, unit: "€", format: "%n %u") %></td>
-                <td><%= order.count_ordered_parts %></td>
-                <td><%= order.count_canceled_parts %></td>
-                <td class="col-1"><%= order.creation_date.strftime("%Y-%m-%d") %></td>
+                <td class="col-1">
+                    <%= link_to order.sid, order_path(order.id) %>
+                </td>
+                <td class="col-1">
+                    <%= order.vehicle_brand %>
+                </td>
+                <td class="col-1">
+                    <%= order.vehicle_model %>
+                </td>
+                <td class="col-2">
+                    <%= order.vin %>
+                </td>
+                <td class="col-1">
+                    <%== order.icon %>
+                </td>
+                <td class="col-1">
+                    <%== order.color %>
+                </td>
+                <td class="col-2">
+                    <%= order.status %>
+                </td>
+                <td class="col-1">
+                    <%= number_to_currency(order.sum_price_wo_tax_all, unit: "€", format: "%n %u") %>
+                </td>
+                <td>
+                    <%= order.count_ordered_parts %>
+                </td>
+                <td>
+                    <%= order.count_canceled_parts %>
+                </td>
+                <td class="col-2 ">
+                    <%= order.creation_date.strftime("%Y-%m-%d") %>
+                </td>
             </tr>
         <% end %>
     </tbody>
 </table>
-<%= render "layouts/pagination", pagy: pagy %>
+<%= render "layouts/shared/pagination", pagy: pagy %>
+
