@@ -1,0 +1,27 @@
+
+
+<%= form_with(url: find_detail_preps_path, method: 'post') do |form| %>
+    <div class="row">
+        <div class="col"> 
+            <%= form.text_area :name, class: "form-control", placeholder: "Add name", rows: 15 %>
+        </div>
+        <div class="col"> 
+            <%= form.text_area :code, class: "form-control", placeholder: "Add code", rows: 15 %>
+        </div>
+        <div class="col"> 
+            <%= form.text_area :quantity, class: "form-control", placeholder: "Add quantity", rows: 15 %>
+        </div>
+        <div class="col"> 
+            <%= form.text_area :comment, class: "form-control", placeholder: "Add comment", rows: 15 %>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col text-start">
+            <%= link_to "Cancel", "#", data: { controller: "modals", action: "modals#close" }, class: "btn btn-danger m-1" %>
+        </div>
+        <div class="col text-end">
+            <%= form.submit "find", class: "btn btn-primary", data: {  controller: "modals", action: "modals#find" }, class: "btn btn-primary m-1" %>
+        </div>
+    </div> 
+<% end %>
+

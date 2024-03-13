@@ -10,9 +10,12 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
   <body>
+    <%= turbo_frame_tag "popup_form" %>
+
     <% if user_signed_in? %>
       <%= render partial: "layouts/shared/navbar"%>
     <%end%>
+
     <div class="container my-3">
       <%= render partial: "layouts/shared/flash"%>
       <%= yield %>

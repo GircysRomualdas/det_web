@@ -18,13 +18,27 @@ class FindDetailPrepsController < ApplicationController
 
     def create 
         param = detail_params
-        details = ApiDetailsService.new.get_detail_by_code(param[:code], current_user)
+        codes = param[:code].split(/\n/)
+        name = param[:name] ? param[:name].split(/\n/) : []
+        quantity = param[:quantity] ? param[:quantity].split(/\n/) : []
+        comment = param[:comment] ? param[:comment].split(/\n/) : []
+        preps = {}
         info = ""
         warning = ""
+
+        codes.each_with_index do |code, index|
+            preps[code] = {
+                "name": name[index],
+                "quantity": quantity[index].to_i > 0 ? quantity[index].to_i : 1,
+                "comment": comment[index]
+            }
+        end
+
+        details = ApiDetailsService.new.get_detail_by_code(codes, current_user)
+
         details.each do |detail| 
             created = FindDetailPrep.where(detail_id: detail["id"]).first_or_initialize
             order_prep = OrderPrep.where(user: current_user).first
-
             if order_prep.brand.brand_id == detail["car_id"] or order_prep.brand.group_id == Brand.where(brand_id: detail["car_id"]).first.group_id
                 created.update!( 
                     order_prep: order_prep,
@@ -36,17 +50,15 @@ class FindDetailPrepsController < ApplicationController
                     order_type_name: detail["order_type_name"],
                     delivery_days: detail["delivery_days"],
                     code: detail["code"], 
-                    name: nil, 
-                    comment: nil,
+                    name: preps[detail["code"]][:name], 
+                    comment: preps[detail["code"]][:comment],
                     price: detail["price"],
-                    quantity: detail["quantity"]
+                    quantity: preps[detail["code"]][:quantity]
                 )
                 info += "find detail car: #{detail["car_name"]} code: #{detail["code"]} price: #{detail["price"]}\n"
             else 
                 warning += "find detail car: #{detail["car_name"]} code: #{detail["code"]} wrong code\n"
             end
-
-            
         end
 
         info != "" ? flash[:info] = info : print("info")

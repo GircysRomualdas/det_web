@@ -10,11 +10,17 @@
     </div>
     <div class="row">
         <div class="col-2">
-
             <%= render "find_detail_preps/search_filter", path: find_detail_preps_path, q: @q %>
         </div>
         <div class="col">
-            <%= render partial: "find_detail_preps/find"%>
+            <div class="row">
+                <div class="col">
+                    <%= render partial: "find_detail_preps/find"%>
+                </div>
+                <div class="col-1">
+                    <%= link_to "Many", new_find_detail_prep_path, class: "btn btn-primary" %>
+                </div>
+            </div>
             <%= render "find_detail_preps/table", find_details: @find_details, pagy: @pagy %>
         </div>
     </div>
