@@ -59,6 +59,14 @@ en:
       code: "Code*"
       find: "Find*"
 
+    form:
+      add_name: "Add name*"
+      add_code: "Add code*"
+      add_quantity: "Add quantity*"
+      add_comment: "Add comment*"
+      cancel: "Cancel*"
+      find: "Find*"
+
     table:
       brand: "Brand*"
       delivery: "Delivery*"

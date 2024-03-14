@@ -33,7 +33,7 @@
                 <%= sort_link(@q, :count_canceled_parts, t(".cancelled"), class: "text-decoration-none") %>
             </th>
             <th class="col-1">
-                <%= sort_link(@q, :creation_date, t(".created"), class: "text-decoration-none") %>
+                <%= sort_link(@q, :creation_date, t(".created"), class: "text-decoration-none mx-1") %>
             </th>
         </tr>
     </thead>
@@ -70,7 +70,7 @@
                 <td>
                     <%= order.count_canceled_parts %>
                 </td>
-                <td class="col-2 ">
+                <td class="col-1">
                     <%= order.creation_date.strftime("%Y-%m-%d") %>
                 </td>
             </tr>

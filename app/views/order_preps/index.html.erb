@@ -1,6 +1,6 @@
 
 <div>
-    <div class="container">
+    <div>
         <div class="row">
             <div class="col my-auto">
                 <div class="row">
@@ -8,7 +8,7 @@
                         <h1><%=t(".new_order")%></h1>
                     </div>
                     <div class="col my-auto">
-                        <%= button_to t(".order"), order_preps_path(id: @order_prep.id), method: :post, form: {data: {turbo_confirm: "Are you sure order?"}}, class: "btn btn-warning" %>
+                        <%= button_to t(".order"), order_preps_path(id: @order_prep.id), method: :post, form: {data: {turbo_confirm: "Are you sure order?"}}, class: "btn btn-success" %>
                     </div>
                 </div>
             </div>

@@ -11,12 +11,13 @@
   </head>
   <body>
     <%= turbo_frame_tag "popup_form" %>
+    <%= turbo_frame_tag "find_many_details_id" %>
 
     <% if user_signed_in? %>
       <%= render partial: "layouts/shared/navbar"%>
     <%end%>
 
-    <div class="container my-3">
+    <div class="container-lg my-3">
       <%= render partial: "layouts/shared/flash"%>
       <%= yield %>
     </div>

@@ -18,10 +18,10 @@ class FindDetailPrepsController < ApplicationController
 
     def create 
         param = detail_params
-        codes = param[:code].split(/\n/)
-        name = param[:name] ? param[:name].split(/\n/) : []
-        quantity = param[:quantity] ? param[:quantity].split(/\n/) : []
-        comment = param[:comment] ? param[:comment].split(/\n/) : []
+        codes = param[:code].gsub("\r\n", "\n").split(/\n/)
+        name = param[:name] ? param[:name].gsub("\r\n", "\n").split(/\n/) : []
+        quantity = param[:quantity] ? param[:quantity].gsub("\r\n", "\n").split(/\n/) : []
+        comment = param[:comment] ? param[:comment].gsub("\r\n", "\n").split(/\n/) : []
         preps = {}
         info = ""
         warning = ""
@@ -35,7 +35,6 @@ class FindDetailPrepsController < ApplicationController
         end
 
         details = ApiDetailsService.new.get_detail_by_code(codes, current_user)
-
         details.each do |detail| 
             created = FindDetailPrep.where(detail_id: detail["id"]).first_or_initialize
             order_prep = OrderPrep.where(user: current_user).first

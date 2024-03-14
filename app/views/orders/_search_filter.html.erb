@@ -2,24 +2,28 @@
 <%= search_form_for(q, url: path, method: :get) do |f| %>
     <div class="input-group mb-3">
         <%= f.search_field :sid_or_vehicle_brand_or_vehicle_model_or_vin_or_status_or_codelist_cont, class: "form-control" %>
-        <%= f.submit class: "btn btn-primary" %>
+        <%= f.submit "Search", type: :image, src: image_path("loupe-modified.png"), class: "custom-search-loupe btn btn-primary" %>
     </div>
     <div>
-        <h5><%= t(".brand") %></h5>
-        <%= f.collection_check_boxes(:vehicle_brand_in, Order.select(:vehicle_brand).distinct, :vehicle_brand, :vehicle_brand, {}, onchange: 'this.form.requestSubmit();') do |checkbox| %>
-            <div class="field form-group form-check">
-                <%= checkbox.check_box class: "form-check-input" %>
-                <%= checkbox.label class: "form-check-label" %>
-            </div>
+        <% if Order.select(:vehicle_brand).distinct.present? %>
+            <h5><%= t(".brand") %></h5>
+            <%= f.collection_check_boxes(:vehicle_brand_in, Order.select(:vehicle_brand).distinct, :vehicle_brand, :vehicle_brand, {}, onchange: 'this.form.requestSubmit();') do |checkbox| %>
+                <div class="field form-group form-check">
+                    <%= checkbox.check_box class: "form-check-input" %>
+                    <%= checkbox.label class: "form-check-label" %>
+                </div>
+            <% end %>
         <% end %>
     </div>
     <div>
-        <h5><%= t(".status") %></h5>
-        <%= f.collection_check_boxes(:status_in, Order.select(:status).distinct, :status, :status, {}, onchange: 'this.form.requestSubmit();') do |checkbox| %>
-            <div class="field form-group form-check">
-                <%= checkbox.check_box class: "form-check-input" %>
-                <%= checkbox.label class: "form-check-label" %>
-            </div>
+        <% if Order.select(:status).distinct.present? %>
+            <h5><%= t(".status") %></h5>
+            <%= f.collection_check_boxes(:status_in, Order.select(:status).distinct, :status, :status, {}, onchange: 'this.form.requestSubmit();') do |checkbox| %>
+                <div class="field form-group form-check">
+                    <%= checkbox.check_box class: "form-check-input" %>
+                    <%= checkbox.label class: "form-check-label" %>
+                </div>
+            <% end %>
         <% end %>
     </div>
 <% end %>
