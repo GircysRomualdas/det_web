@@ -62,9 +62,9 @@ class FindDetailPrepsController < ApplicationController
                     price: detail["price"],
                     quantity: preps[detail["code"]][:quantity]
                 )
-                info += "#{detail["car_name"]} | #{detail["code"]} \n"
+                info += "#{detail["car_name"]} | #{detail["code"]} | #{detail["price"]} \n"
             else 
-                warning += "#{detail["car_name"]} |  #{detail["code"]} \n"
+                warning += "#{detail["car_name"]} |  #{detail["code"]} | #{detail["price"]} \n"
             end
         end
 

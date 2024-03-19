@@ -40,9 +40,9 @@ class DetailPrepsController < ApplicationController
             )
 
             if response 
-                info += "add detail to order Brand: #{findDetailPrep.car_name} code: #{findDetailPrep.code} price: #{findDetailPrep.price} quantity #{findDetailPrep.quantity}\n"
+                info += "#{findDetailPrep.car_name} | #{findDetailPrep.code} | #{findDetailPrep.price} | #{findDetailPrep.quantity}\n"
             else
-                warning += "not add detail to order name: #{findDetailPrep.car_name} code: #{findDetailPrep.code} price: #{findDetailPrep.price} quantity #{findDetailPrep.quantity}\n"
+                warning += "#{findDetailPrep.car_name} | #{findDetailPrep.code} | #{findDetailPrep.price} | #{findDetailPrep.quantity}\n"
             end
         end
 
