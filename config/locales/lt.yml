@@ -1,2 +1,130 @@
+
 lt:
-    test: "lt"
+  devise:
+    sessions:
+      new:
+        log_in: "Prisijungti*"
+        email: "El. paštas*"
+        password: "Slaptažodis*"
+        remember_me: "Prisimink mane*"
+    
+    shared: 
+      links:
+        log_in: "Prisijungti*"
+        sign_up: "Registruotis*"
+        forgot_your_password: "Pamiršai slaptažodį?*"
+    
+    passwords:
+      new:
+        forgot_your_password: "Pamiršai slaptažodį?*"
+        email: "El. paštas"
+        send: "Siųsti*"
+      
+      edit:
+        change_your_password: "Pasikeiskite slaptažodį*"
+        new_password: "Naujas Slaptažodis*"
+        characters_minimum: "mažiausiai simbolių*"
+        confirm_new_password: "Patvirtinti naują slaptažodį*"
+        change: "Pakeisti*"
+
+  layouts:
+    shared:
+      navbar:
+        orders: "Užsakymai*"
+        find_parts: "Rasti dalis*"
+        new_order: "Naujas užsakymas*"
+        log_out: "Atsijungti*"
+  
+  orders:
+    index:
+      all_orders: "Visi užsakymai*"
+
+    search_filter:
+      brand: "Markė*"
+      status: "Statusas*"
+
+    table:
+      id: "ID*"
+      brand: "Markė*"
+      model: "Modelis*"
+      vin: "VIN*"
+      changes: "Pakeitimai*"
+      progress: "Progresas*"
+      created: "Sukurta*"
+      status: "Statusas*"
+      ordered: "Užsakyta*"
+      cancelled: "Atšaukta*"
+      price: "Kaina*"
+    
+    order:
+      id: "ID*"
+      status: "Statusas*"
+      brand: "Markė*"
+      model: "Modelis*"
+      vin: "VIN*"
+
+  details:
+    table:
+      code: "Kodas*"
+      name: "Pavadinimas*"
+      comment: "Komentaras*"
+      progress: "Progresas*"
+      price: "Kaina*"
+      status: "Statusas*"
+    
+    search_filter:
+      status: "Statusas*"
+
+  find_detail_preps:
+    index:
+      find_parts: "Rasti dalis*"
+
+    search_filter:
+      brand: "Markė*"
+
+    find:
+      code: "Kodas*"
+      find: "Rasti*"
+
+    form:
+      add_name: "Pridėti pavadinimą*"
+      add_code: "Pridėti kodą*"
+      add_quantity: "Pridėti kiekis*"
+      add_comment: "Pridėti komentarą*"
+      cancel: "Atšaukti*"
+      find: "Rasti*"
+
+    table:
+      brand: "Markė*"
+      delivery: "Pristatymas*"
+      code: "Kodas*"
+      name: "Pavadinimas*"
+      comment: "Komentaras*"
+      price: "Kaina*"
+      quantity: "Kiekis*"
+      add_all: "Pridėti viską*"
+      add: "Pridėti*"
+    
+  brands:
+    form:
+      update: "Atnaujinti*"
+
+  order_preps:
+    index:
+      new_order: "Naujas užsakymas*"
+      order: "Užsakymas*"
+
+  detail_preps:
+    search_filter:
+      brand: "Markė*"
+
+    table:
+      brand: "Markė*"
+      delivery: "Pristatymas*"
+      code: "Kodas*"
+      name: "Pavadinimas*"
+      comment: "Komentaras*"
+      price: "Kaina*"
+      quantity: "Kiekis*"
+      remove_all: "Pašalinti viską*"
+      remove: "Pašalinti*"

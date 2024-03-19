@@ -1,11 +1,8 @@
-def generate_code(number)
-    charset = Array('A'..'Z') + Array('a'..'z')
-    Array.new(number) { charset.sample }.join
-end
 
-response = HTTParty.get('https://dev.detaliutiekimas.lt/ords/dev/web/getAllBrands', :verify => false)
 
-response["brands"].each do |brand| 
+response = ApiBrandsService.new.get_all_brands
+
+response.each do |brand| 
     created = Brand.where(id: brand["brand_id"]).first_or_initialize
 
     created.update!(
@@ -37,9 +34,9 @@ orderPrep2.update!(
     brand: Brand.first
 )
 
-response = HTTParty.get('https://dev.detaliutiekimas.lt/ords/dev/web/getAllCompanies', :verify => false)
+response = ApiCompaniesService.new.get_all_companies
 
-response["companies"].each do |company| 
+response.each do |company| 
     if company["company_email"] != nil 
         created = User.where(email: company["company_email"]).first
         if created != nil 
@@ -55,7 +52,7 @@ response["companies"].each do |company|
                 brand: Brand.first
             )
         else  
-            password = generate_code(40)
+            password = GenerateService.new.code(40)
             # password = "password"   # test development
             user = User.create(
                 email:                  company["company_email"],
@@ -76,9 +73,9 @@ response["companies"].each do |company|
 end
 
 
-response = HTTParty.get('https://dev.detaliutiekimas.lt/ords/dev/web/getAllOrders', :verify => false)
+response = ApiOrdersService.new.get_all_orders
 
-response["orders"].each do |order| 
+response.each do |order| 
     created = Order.where(id: order["ID"]).first_or_initialize
     created.update!(
         sid: order["SID"],
@@ -101,9 +98,9 @@ response["orders"].each do |order|
     )
 end
 
-response = HTTParty.get('https://dev.detaliutiekimas.lt/ords/dev/web/getAllDetails', :verify => false)
+response = ApiDetailsService.new.get_all_details
 
-response["details"].each do |detail| 
+response.each do |detail| 
     created = Detail.where(id: detail["ID"]).first_or_initialize
     order = Order.find(detail["NORDER_ID"])
 
