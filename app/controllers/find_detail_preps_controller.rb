@@ -38,7 +38,15 @@ class FindDetailPrepsController < ApplicationController
         details.each do |detail| 
             created = FindDetailPrep.where(detail_id: detail["id"]).first_or_initialize
             order_prep = OrderPrep.where(user: current_user).first
-            if order_prep.brand.brand_id == detail["car_id"] or order_prep.brand.group_id == Brand.where(brand_id: detail["car_id"]).first.group_id
+
+            print("\n-----------------------\n")
+            print("\norder_prep.brand.brand_id == detail['car_id'] ||| #{order_prep.brand.brand_id} == #{detail['car_id']} \n")
+            print("or")
+            print("\norder_prep.brand.group_id == Brand.where(brand_id: detail['car_id']).first.group_id ||| #{order_prep.brand.group_id} == #{Brand.where(brand_id: detail['car_id']).first.group_id}\n")
+            print("\norder_prep.brand.group_id == Brand.where(brand_id: detail['car_id']).first.group_id ||| #{order_prep.brand.group_id.class} == #{Brand.where(brand_id: detail['car_id']).first.group_id.class}\n")
+            print("\n-----------------------\n")
+
+            if order_prep.brand.brand_id == detail["car_id"] || (order_prep.brand.group_id == Brand.where(brand_id: detail["car_id"]).first.group_id && (order_prep.brand.group_id != nil or Brand.where(brand_id: detail["car_id"]).first.group_id != nil))
                 created.update!( 
                     order_prep: order_prep,
                     car_id: detail["car_id"], 
@@ -54,9 +62,9 @@ class FindDetailPrepsController < ApplicationController
                     price: detail["price"],
                     quantity: preps[detail["code"]][:quantity]
                 )
-                info += "find detail car: #{detail["car_name"]} code: #{detail["code"]} price: #{detail["price"]}\n"
+                info += "#{detail["car_name"]} | #{detail["code"]} \n"
             else 
-                warning += "find detail car: #{detail["car_name"]} code: #{detail["code"]} wrong code\n"
+                warning += "#{detail["car_name"]} |  #{detail["code"]} \n"
             end
         end
 
