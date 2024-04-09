@@ -4,9 +4,18 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><%= link_to t(".orders"), orders_path, class: "nav-link text-white" %></li>
-                <li class="nav-item"><%= link_to t(".find_parts"), find_detail_preps_path, class: "nav-link text-white" %></li>
-                <li class="nav-item"><%= link_to t(".new_order"), order_preps_path, class: "nav-link text-white" %></li>
+                <%= link_to(orders_path) do %>
+                    <%= image_tag "logo.png", alt: "logo", height: "60", width: "173" %>
+                <% end %>
+                <li class="nav-item my-auto">
+                    <%= link_to t(".orders"), orders_path, class: "rounded nav-link text-white custom-nav-link " %>
+                </li>
+                <li class="nav-item my-auto">
+                    <%= link_to t(".find_parts"), find_detail_preps_path, class: "rounded nav-link text-white custom-nav-link" %>
+                </li>
+                <li class="nav-item my-auto">
+                    <%= link_to t(".new_order"), order_preps_path, class: "rounded nav-link text-white custom-nav-link" %>
+                </li>
             </ul>
             <%= render partial: "locales/locale"%>
             <div class="mx-2"><%= current_user.email %></div>
