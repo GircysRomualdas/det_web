@@ -1,7 +1,7 @@
 <%= search_form_for(q, url: path, method: :get) do |f| %>
     <div class="input-group mb-3">
         <%= f.search_field :car_name_or_delivery_days_or_code_or_name_or_comment_or_quantity_cont, class: "form-control" %>
-        <%= f.submit "Search", type: :image, src: image_path("loupe-modified.png"), class: "custom-search-loupe btn btn-primary" %>
+        <%= f.submit "Search", type: :image, src: image_path("loupe-modified.png"), class: "custom-search-loupe btn btn-primary p-1" %>
     </div>
     <div>
         <% if FindDetailPrep.select(:car_name).distinct.present? %>

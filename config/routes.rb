@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :locales
   resources :order_preps
   resources :orders
+
+  resources :home
   
-  root "orders#index"
+  # root "orders#index"
+  root "home#index"
 end

@@ -1,46 +1,46 @@
 
-<table class="table table-hover custom-table">
+<table class="table table-hover custom-table  table-bordered">
     <thead>
-        <tr>
-            <th class="col-1">
+        <tr style="vertical-align: middle;">
+            <th class="col-1" style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :sid, t(".id"), class: "text-decoration-none") %>
             </th>
-            <th class="col-1">
+            <th class="col-1" style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :vehicle_brand, t(".brand"), class: "text-decoration-none") %>
             </th>
-            <th class="col-1">
+            <th class="col-1" style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :vehicle_model, t(".model"), class: "text-decoration-none") %>
             </th>
-            <th class="col-2">
+            <th class="col-2" style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :vin, t(".vin"), class: "text-decoration-none") %>
             </th>
-            <th class="col-1">
+            <th class="col-1" style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :icon, t(".changes"), class: "text-decoration-none") %>
             </th>
-            <th class="col-1">
+            <th class="col-1" style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :color, t(".progress"), class: "text-decoration-none") %>
             </th>
-            <th class="col-2">
+            <th class="col-2" style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :status, t(".status"), class: "text-decoration-none") %>
             </th>
-            <th class="col-1">
+            <th class="col-1" style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :sum_price_wo_tax_all, t(".price"), class: "text-decoration-none") %>
             </th>
-            <th>
+            <th style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :count_ordered_parts, t(".ordered"), class: "text-decoration-none") %>
             </th>
-            <th>
+            <th style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :count_canceled_parts, t(".cancelled"), class: "text-decoration-none") %>
             </th>
-            <th class="col-1">
+            <th class="col-1" style="background: #F6F6F6 !important;">
                 <%= sort_link(@q, :creation_date, t(".created"), class: "text-decoration-none mx-1") %>
             </th>
         </tr>
     </thead>
-    <tbody class="table-group-divider">
+    <tbody >
         <% orders.each do |order| %>
-            <tr>
-                <td class="col-1">
+            <tr style="vertical-align: middle;">
+                <td class="col-1" >
                     <%= link_to order.sid, order_path(order.id) %>
                 </td>
                 <td class="col-1">
